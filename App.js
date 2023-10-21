@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {Router} from "./src/navigation/Router";
+import {AuthProvider} from "./src/context/AuthProvider";
+import {ToastProvider} from 'react-native-toast-notifications'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <ToastProvider
+            duration={5000}
+            animationType='slide-in'
+            animationDuration={250}
+        >
+            <AuthProvider>
+                <Router/>
+            </AuthProvider>
+        </ToastProvider>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
